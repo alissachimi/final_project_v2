@@ -1,0 +1,91 @@
+.list_mat {
+  background-color: white;
+  overflow: auto;
+  height: 90%;
+}
+
+.evenPost{
+  background-color: rgba(165, 195, 225, 0.136);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+
+.oddPost{
+  background-color: rgba(165, 195, 225, 0.212);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+
+
+.speechBubbleOdd {
+  position: relative;
+  background-color: #ffffff90; /* Set your desired background color */
+  padding: 10px;
+  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #0000004a; /* Set border color and width */
+  width: 200px; /* Set width */
+  grid-column-start: 5;
+  grid-column-end: 5;
+  text-align: center;
+  box-shadow: 4px 4px 3px 4px #88888846;
+  justify-self: right;
+}
+
+.speechBubbleOdd::before {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  right: -14%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #0000004a ; /* Set border color and shape */
+  transform: translateX(-50%);
+}
+
+.speechBubbleEven {
+  position: relative;
+  background-color: #ffffff90; /* Set your desired background color */
+  padding: 10px;
+  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #0000004a; /* Set border color and width */
+  width: 200px; /* Set width */
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+  box-shadow: 4px 4px 3px 4px #88888846;
+  justify-self: left;
+}
+
+.speechBubbleEven::before {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  left: -5%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent  #0000004a  transparent transparent; /* Set border color and shape */
+  transform: translateX(-50%);
+}
+
+.authorPicEven {
+  height: 50px;
+  border-radius: 40%;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  justify-self: right;
+  margin: 20px;
+  align-self: self-end;
+}
+
+.authorPicOdd {
+  height: 50px;
+  border-radius: 40%;
+  grid-column-start: 6;
+  grid-column-end: 6;
+  justify-self: left;
+  align-self: self-end;
+  margin: 20px;
+}
+

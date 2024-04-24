@@ -1,1 +1,21 @@
-<p>discussion-display4 works!</p>
+  <mat-card class="list_mat">
+    <mat-accordion multi="true" *ngIf="posts.length > 0">
+      <div *ngFor="let post of posts">
+        <div *ngIf="post.id % 2 == 0" class="evenPost">
+          <img class="authorPicEven" src="assets/alissa.jpg">
+          <div class="speechBubbleEven">
+            <p><b>{{post.title}}</b></p>
+            <p>{{post.content}}</p>
+          </div>
+        </div>
+        <div *ngIf="post.id % 2 == 1" class="oddPost">
+          <div class="speechBubbleOdd">
+            <p><b>{{post.title}}</b></p>
+            <p>{{post.content}}</p>
+          </div>
+          <img class="authorPicOdd" src="assets/alyssa.jpg">
+        </div>
+      </div>
+    </mat-accordion>
+    <p *ngIf="posts.length <= 0">No content to render</p>
+  </mat-card>

@@ -1,0 +1,41 @@
+.file_mat {
+  background-color: rgba(165, 195, 225, 0.152);
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+  width:100%;
+  height:min-content;
+  padding: 10px;
+  /*display: none;*/
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0px 20px;
+}
+
+.rollCall {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.title {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.content {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.submitButton {
+  grid-column-start: 3;
+  grid-column-end: 3;
+}
+
+.closeButton {
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
