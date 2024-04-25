@@ -1,7 +1,9 @@
 .list_mat {
-  background-color: white;
+  background-color: rgba(165, 195, 225, 0.136);
+  height: 100%;
   overflow: auto;
-  height: 90%;
+  flex-direction: column-reverse;
+  display: flex;
 }
 
 .evenPost{

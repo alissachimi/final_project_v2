@@ -1,7 +1,7 @@
 .file_mat {
-  background-color: rgba(165, 195, 225, 0.152);
-  position: absolute;
-  bottom: 0;
+  background-color: rgb(210, 221, 234);
+  /* position: absolute;
+  bottom: 0; */
   margin-bottom: 0;
   width:100%;
   height:min-content;
