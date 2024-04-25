@@ -20,19 +20,22 @@ app.get('/', (req, res, next) => {
     res.send('Hello World!')
 })
 
-// app.use('/api/posts',(req,res,next)=>{
-//   const posts = [
-//   {
-//   id: "6546654",
-//   title:"1. Server Post",
-//   content:"This is from the server"
-//   }
-//   ]
+app.use('/api/posts',(req,res,next)=>{
+  const posts = [
+  {
+  id: "0",
+  author: 'alissa',
+  title:"post from server",
+  content:"This is from the server",
+  picture: null,
+  date: null
+  }
+  ]
 
-//   res.status(200).json({
-//     message:"This is fetched data",
-//     posts: posts
-//   })
-// });
+  res.status(200).json({
+    message:"This is fetched data",
+    posts: posts
+  })
+});
 
 module.exports = app
