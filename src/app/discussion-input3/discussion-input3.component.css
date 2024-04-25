@@ -39,3 +39,19 @@
   grid-column-start: 1;
   grid-column-end: 1;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.display {
+  flex-grow: 1;
+  overflow: hidden;
+}
