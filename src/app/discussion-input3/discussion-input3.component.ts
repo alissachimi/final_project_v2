@@ -20,7 +20,7 @@ export class DiscussionInput3Component {
       return;
     }
 
-    this.discussionService.addPost(this.currentId, null, form.value.title, form.value.content, null, null);
+    this.discussionService.addPost(this.currentId, null, form.value.title, form.value.content, null);
     form.resetForm();
     this.currentId++
   }

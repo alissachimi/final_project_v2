@@ -6,6 +6,29 @@
   display: flex;
 }
 
+::-webkit-scrollbar {
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(210, 221, 234);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(165, 183, 202);
+}
+
 .evenPost{
   background-color: rgba(165, 195, 225, 0.136);
   padding: 20px;
@@ -90,4 +113,3 @@
   align-self: self-end;
   margin: 20px;
 }
-

@@ -27,8 +27,8 @@ export class DiscussionService {
       return this.postUpDate.asObservable();
   }
 
-  addPost(id:number, author: string, title: string, content: string, picture: string, date: Date){
-      const post: Post = {id:id, author: author, title: title, content:content, picture:picture, date:date};
+  addPost(id:number, author: string, title: string, content: string, date: Date){
+      const post: Post = {id:id, author: author, title: title, content:content, date:date};
       this.posts.push(post);
       this.postUpDate.next([...this.posts]);
 
