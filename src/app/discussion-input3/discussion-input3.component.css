@@ -1,0 +1,57 @@
+.file_mat {
+  background-color: rgb(210, 221, 234);
+  /* position: absolute;
+  bottom: 0; */
+  margin-bottom: 0;
+  width:100%;
+  height:min-content;
+  padding: 10px;
+  /*display: none;*/
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0px 20px;
+}
+
+.rollCall {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.title {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.content {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.submitButton {
+  grid-column-start: 3;
+  grid-column-end: 3;
+}
+
+.closeButton {
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.display {
+  flex-grow: 1;
+  overflow: hidden;
+}

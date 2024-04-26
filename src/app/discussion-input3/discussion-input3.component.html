@@ -1,1 +1,43 @@
-<p>discussion-input3 works!</p>
+<div class="container">
+  <mat-card class="file_mat">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+      <p>
+      Create a New Post
+      </p>
+      </mat-expansion-panel-header>
+      <form (submit)="onAddPost(postForm)" #postForm = "ngForm" class="grid">
+        <mat-form-field class="rollCall" >
+          <input matInput
+          type="text"
+          name="title"
+          ngModel required minlength="3"
+          placeholder="Roll Call #"
+          #title="ngModel">
+          <mat-error *ngIf="title.invalid">Invalid operation please enter a different title</mat-error>
+        </mat-form-field>
+        <mat-form-field class="title">
+          <input matInput
+          type="text"
+          name="title"
+          ngModel required minlength="3"
+          placeholder="Title"
+          #title="ngModel">
+          <mat-error *ngIf="title.invalid">Invalid operation please enter a different title</mat-error>
+        </mat-form-field>
+        <mat-form-field class="content">
+          <textarea matInput
+          name="content"
+          placeholder="Content"
+          ngModel required #content="ngModel">
+          </textarea>
+          <mat-error *ngIf="content.invalid">Invalid operation please enter different content</mat-error>
+        </mat-form-field>
+        <button id="file_but" mat-raised-button
+        type="submit" class="submitButton">Save post</button>
+      </form>
+      </mat-expansion-panel>
+  </mat-card>
+
+  <app-discussion-display4 class="display"></app-discussion-display4>
+</div>
