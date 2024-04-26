@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 const PostModel = require('./Models/post')
 
-mongoose.connect()//enter in a long string here!!
+mongoose.connect('mongodb+srv://an642:webdev2!@cs4380-final-project.lwkigre.mongodb.net/?retryWrites=true&w=majority&appName=CS4380-Final-Project')//connection string
 .then(()=>{
   console.log('connected to database')
 })
