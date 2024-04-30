@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const PostModel = require('./Models/post')
+const MemberModel = require('./Models/member')
 
 mongoose.connect('mongodb+srv://an642:webdev2!@cs4380-final-project.lwkigre.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=CS4380-Final-Project')//connection string
 .then(()=>{
@@ -88,6 +89,15 @@ app.get('/api/posts', (req, res, next)=>{
     res.status(200).json({
       message: 'this data is from the database',
       posts: documents
+    })
+  })
+})
+
+app.get('/api/members', (req, res, next)=>{
+  MemberModel.find().then(documents =>{
+    res.status(200).json({
+      message: 'this data is from the database',
+      members: documents
     })
   })
 })
