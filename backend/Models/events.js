@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// define events schema
 eventSchema = mongoose.Schema({
   id: {type:Number, required:false},
   eventChair:{type:String, required:true},
@@ -9,4 +10,13 @@ eventSchema = mongoose.Schema({
   rsvpCount: {type:Number, required:true}
 })
 
+// method to return the number of RSVPs for an event
+eventSchema.method.countRSVP = function countRSVP(){
+  const count = this.rsvpCount
+  console.log(count);
+  return count;
+}
+
+// creates Event model based on eventSchema
+  // add any methods BEFORE creating the model
 module.exports = mongoose.model('Event', eventSchema)
