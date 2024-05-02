@@ -82,6 +82,61 @@ app.get('/api/posts', (req, res, next)=>{
   })
 })
 
-// set up events and eventRSVPs
+// set up events
+
+// dummy test data
+// app.post('/api/events',(req,res,next)=>{
+//   const event = new EventModel ({
+//     eventChair: 'Event Chair',
+//     eventName: 'Event TBD',
+//     eventDate: 'Date TBD',
+//     details: 'Details for the event are found here',
+//     rsvpCount: -1
+//   })
+//   event.save()
+// });
+app.post('/api/events',(req,res,next)=>{
+  const event = new EventModel ({
+    // id: req.body.id,
+    // eventChair: req.body.chair,
+    // eventName: req.body.name,
+    // eventDate: req.body.date,
+    // details: req.body.details,
+    // rsvpCount: req.body.rsvpCount
+    // id: Number,
+    eventChair: String,
+    eventName: String,
+    eventDate: Date,
+    details: String,
+    rsvpCount: Number
+  })
+  event.save()
+});
+
+app.get('/api/events', (req, res, next)=>{
+  EventModel.find().then(documents =>{
+    res.status(200).json({
+      message: 'successfully accessed events data',
+      events: documents
+    })
+  })
+})
+// set up eventRSVPs
+app.post('/api/eventRSVPs',(req,res,next)=>{
+  const rsvp = new EventRSVPModel ({
+    // id: Number,
+    eventID: {type: Schema.Types.ObjectId, ref: "Event"}, // create "foreign key"
+    rollCallNum: Number
+  })
+  rsvp.save()
+});
+app.get('/api/eventRSVPs', (req, res, next)=>{
+  EventModel.find().then(documents =>{
+    res.status(200).json({
+      message: 'successfully accessed eventRSVPs data',
+      rsvp: documents
+    })
+  })
+})
 
 module.exports = app

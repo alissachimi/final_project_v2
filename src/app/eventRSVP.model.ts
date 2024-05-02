@@ -1,5 +1,7 @@
+import { ObjectId } from "mongodb";
+
 export interface EventRSVP{
-  id: Number;
-  eventID: Number;
+  // id: Number;
+  eventID: ObjectId;
   rollCallNum: Number;
 }

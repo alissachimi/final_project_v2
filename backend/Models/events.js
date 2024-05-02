@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 // define events schema
 eventSchema = mongoose.Schema({
-  id: {type:Number, required:false},
+  // id: {type:Number, required:false}, // mongoDB automatically generates an objectID for documents
   eventChair:{type:String, required:true},
   eventName: {type:String, required:true},
   eventDate:{type:Date, required:true},

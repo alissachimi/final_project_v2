@@ -1,5 +1,5 @@
 export interface Event{
-  id: Number;
+  // id: Number;
   eventChair: String;
   eventName: String;
   eventDate: Date;
