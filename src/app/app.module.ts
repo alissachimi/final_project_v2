@@ -19,6 +19,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {HttpClientModule} from "@angular/common/http";
+import { MatGridListModule } from '@angular/material/grid-list';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration(),
