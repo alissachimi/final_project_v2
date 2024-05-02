@@ -2,18 +2,20 @@
     <mat-accordion multi="true" *ngIf="posts.length > 0">
       <div *ngFor="let post of posts; let i = index">
         <div *ngIf="i % 2 == 0" class="evenPost" [@fadeInUp]>
-          <img class="authorPicEven" src="assets/alissa.jpg">
+          <img class="authorPicEven" [src]="'assets/' + post.roll_call + '.jpg'">
           <div class="speechBubbleEven">
-            <p><b>{{post.title}}</b></p>
+            <p class="date">{{post.my_date}}</p>
+            <p class="title">{{post.title}}</p>
             <p>{{post.content}}</p>
           </div>
         </div>
         <div *ngIf="i % 2 == 1" class="oddPost" [@fadeInUp]>
           <div class="speechBubbleOdd">
-            <p><b>{{post.title}}</b></p>
+            <p class="date">{{post.my_date}}</p>
+            <p class="title">{{post.title}}</p>
             <p>{{post.content}}</p>
           </div>
-          <img class="authorPicOdd" src="assets/alyssa.jpg">
+          <img class="authorPicOdd" [src]="'assets/' + post.roll_call + '.jpg'">
         </div>
       </div>
     </mat-accordion>

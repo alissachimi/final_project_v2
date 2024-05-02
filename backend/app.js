@@ -39,27 +39,34 @@ app.get('/', (req, res, next) => {
 
 
 app.post('/api/posts',(req,res,next)=>{
-  console.log('entering post in app.js')
+  //get the current date
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
 
-  today = mm + '/' + dd + '/' + yyyy;
+  var today_formatted = mm + '/' + dd + '/' + yyyy;
 
+  //get author name based on roll call number inputted
+  // var member_document = MemberModel.findOne( { "roll_call": 103 } )
+  // console.log(member_document)
+  // var member_name = member_document.first_name + ' ' + member_document.last_name
+  // console.log(member_name)
   const post = new PostModel({
     id: req.body.id,
-    author: req.body.author, ////////////////////////////////////////////////////////change
+    roll_call: req.body.roll_call,
+    author: null,
     title: req.body.title,
     content: req.body.content,
-    date: today
+    my_date: today_formatted
   })
   post.save()
   .then(createPost => {
     console.log('Post inserted successfully');
     res.status(201).json({
       message: 'Post added successfully',
-      postId: createPost._id
+      postId: createPost._id,
+      date: createPost.my_date
     })
   })
   .catch((error) => {

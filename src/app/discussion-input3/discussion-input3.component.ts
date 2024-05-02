@@ -19,7 +19,7 @@ export class DiscussionInput3Component {
       return;
     }
 
-    this.discussionService.addPost(null, null, form.value.title, form.value.content, null);
+    this.discussionService.addPost(null, form.value.rollCall, form.value.title, form.value.content, null);
     form.resetForm();
   }
 }
