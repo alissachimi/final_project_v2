@@ -10,12 +10,17 @@ import {HttpClient} from '@angular/common/http'
   providedIn: 'root'
 })
 export class EventService {
-  // define any variables
+  private events: Event[]=[];
+  private eventUpDate = new Subject<Event[]>()
+
   constructor(private http: HttpClient) { }
 
+  // get the updated events array ?
   // getEventRSVPs(){ }
 
+  // share updated events array with subscribers?
   // getEventRSVPsUpdateListener(){ }
 
+  // increment eventCount if RSVP is valid ?
   // addEventRSVP(){ }
 }
