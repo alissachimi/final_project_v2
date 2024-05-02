@@ -21,8 +21,9 @@ import { MatInputModule } from '@angular/material/input';
 import {HttpClientModule} from "@angular/common/http";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
-
-
+import { EventBubble6Component } from './event-bubble6/event-bubble6.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { CommonModule } from '@angular/common';
     DiscussionDisplay4Component,
     Events5Component,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EventBubble6Component
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,9 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     HttpClientModule,
     MatGridListModule,
-    CommonModule
+    CommonModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration(),
