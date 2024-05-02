@@ -1,7 +1,8 @@
 export interface Post{
   id: number;
+  roll_call: number;
   author: string;
   title: string;
   content: string;
-  date: Date;
+  my_date: string;
   }

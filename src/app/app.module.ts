@@ -19,7 +19,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {HttpClientModule} from "@angular/common/http";
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { CommonModule } from '@angular/common';
+import { EventBubble6Component } from './event-bubble6/event-bubble6.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,8 @@ import {HttpClientModule} from "@angular/common/http";
     DiscussionDisplay4Component,
     Events5Component,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EventBubble6Component
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,11 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    CommonModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration(),

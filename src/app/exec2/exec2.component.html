@@ -1,1 +1,10 @@
-<p>exec2 works!</p>
+<p>This page is working</p>
+
+<mat-grid-list cols="3" gutterSize="20px">
+    <mat-grid-tile *ngFor="let member of members">
+        <img [src]="member.image" class="grid-img">
+        <p>{{member.first_name}}</p>
+        <p>{{member.last_name}}</p>
+        <p>{{member.position}}</p>
+    </mat-grid-tile>
+</mat-grid-list>

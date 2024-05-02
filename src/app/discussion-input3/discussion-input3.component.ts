@@ -8,7 +8,6 @@ import { NgForm } from '@angular/forms';
   styleUrl: './discussion-input3.component.css'
 })
 export class DiscussionInput3Component {
-  currentId=1;
   enteredText="";
 
   constructor(public discussionService: DiscussionService){
@@ -20,8 +19,7 @@ export class DiscussionInput3Component {
       return;
     }
 
-    this.discussionService.addPost(this.currentId, null, form.value.title, form.value.content, null);
+    this.discussionService.addPost(null, form.value.rollCall, form.value.title, form.value.content, null);
     form.resetForm();
-    this.currentId++
   }
 }

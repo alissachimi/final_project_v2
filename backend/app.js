@@ -8,13 +8,14 @@ const mongoose = require('mongoose')
 const PostModel = require('./Models/post')
 const EventModel = require('./Models/events') // events
 const EventRSVPModel = require('./Models/eventRSVPs') // eventRSVPs
+const MemberModel = require('./Models/member')
 
-mongoose.connect('mongodb+srv://an642:webdev2!@cs4380-final-project.lwkigre.mongodb.net/?retryWrites=true&w=majority&appName=CS4380-Final-Project')//connection string
+mongoose.connect('mongodb+srv://an642:webdev2!@cs4380-final-project.lwkigre.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=CS4380-Final-Project')//connection string
 .then(()=>{
   console.log('connected to database')
 })
-.catch(()=>{
-  console.log('connection error')
+.catch((error)=>{
+  console.log('connection error ', error)
 })
 
 app.use(bodyParser.json())
@@ -38,39 +39,41 @@ app.get('/', (req, res, next) => {
     res.send('Hello World!')
 })
 
-app.use('/api/posts',(req,res,next)=>{
-  const posts = [
-    {
-    id: "0",
-    author: 'alissa',
-    title:"post from server",
-    content:"This is from the server",
-    date: null
-    }
-  ]
-
-  res.status(200).json({
-    message:"This is fetched data",
-    posts: posts
-  })
-});
 
 app.post('/api/posts',(req,res,next)=>{
+  //get the current date
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
 
-  today = mm + '/' + dd + '/' + yyyy;
+  var today_formatted = mm + '/' + dd + '/' + yyyy;
 
+  //get author name based on roll call number inputted
+  // var member_document = MemberModel.findOne( { "roll_call": 103 } )
+  // console.log(member_document)
+  // var member_name = member_document.first_name + ' ' + member_document.last_name
+  // console.log(member_name)
   const post = new PostModel({
     id: req.body.id,
-    author: req.body.author,
+    roll_call: req.body.roll_call,
+    author: null,
     title: req.body.title,
     content: req.body.content,
-    date: today
+    my_date: today_formatted
   })
   post.save()
+  .then(createPost => {
+    console.log('Post inserted successfully');
+    res.status(201).json({
+      message: 'Post added successfully',
+      postId: createPost._id,
+      date: createPost.my_date
+    })
+  })
+  .catch((error) => {
+    console.error('Error inserting post:', error);
+  });
 });
 
 app.get('/api/posts', (req, res, next)=>{
@@ -135,6 +138,15 @@ app.get('/api/eventRSVPs', (req, res, next)=>{
     res.status(200).json({
       message: 'successfully accessed eventRSVPs data',
       rsvp: documents
+    })
+  })
+})
+
+app.get('/api/members', (req, res, next)=>{
+  MemberModel.find().then(documents =>{
+    res.status(200).json({
+      message: 'this data is from the database',
+      members: documents
     })
   })
 })
