@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const PostModel = require('./Models/post')
+const EventModel = require('./Models/events') // events
+const EventRSVPModel = require('./Models/eventRSVPs') // eventRSVPs
 
 mongoose.connect('mongodb+srv://an642:webdev2!@cs4380-final-project.lwkigre.mongodb.net/?retryWrites=true&w=majority&appName=CS4380-Final-Project')//connection string
 .then(()=>{
@@ -79,5 +81,7 @@ app.get('/api/posts', (req, res, next)=>{
     })
   })
 })
+
+// set up events and eventRSVPs
 
 module.exports = app
