@@ -1,0 +1,17 @@
+methods i want to implement but unsure where to put them yet
+
+// method to return first name by rollCallNum
+// simple version:
+async function getName(rollCallNum){
+  const name = await db.members.findOne({"roll_call": rollCallNum}, {"first_name":1});
+  return name;
+ }
+// error catch version:
+async function getName(rollCallNum){
+  try{
+    const name = await db.members.findOne({"roll_call": rollCallNum}, {"first_name":1});
+    return name;
+  } catch(error){
+    throw new Error('Error getting member name' + error);
+  }
+}
