@@ -1,0 +1,25 @@
+footer{
+  background-color: navy;
+}
+p{
+  color: white;
+}
+
+.container{
+  text-align: center;
+}
+.container-item{
+  padding:10px;
+  /* display: inline-block; */
+  /* justify-content: center; */
+  margin: auto;
+  /* margin-bottom:10px; */
+  display: inline-block;
+}
+
+.placeholder{
+  background-color: white;
+  width: 45px;
+  height: 45px;
+  color: navy;
+}
