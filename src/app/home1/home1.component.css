@@ -1,5 +1,6 @@
 .home1{
-    background-image: url(../../assets/AOEbackground.svg);
+    /* background-image: url(../../assets/AOEbackground.svg); */
+    background-color: rgb(198, 226, 251);
     width: 100%;
     height: 120%;
 }
@@ -45,25 +46,24 @@ a{
     margin-top: 20px;
     border: solid navy 5px;
     border-radius: 100px;
-    box-shadow: 0 5px 30px rgba(0, 0, 128, 0.624);
 }
 
 .image-container {
-    display: flex; /* Use flexbox to align items */
-    justify-content: center; /* Center the items horizontally */
-    position: relative; /* Position the images relative to the container */
+    display: flex; 
+    justify-content: center; 
+    position: relative; 
 }
 
 #eventsLabel {
-    position: absolute; /* Position eventsLabel absolutely */
-    left: calc(75% + 75px); /* Adjust the position as needed */
+    position: absolute; 
+    left: calc(75% + 75px); 
     width: 15%;
     margin-top: 50px;
 }
 
 .image-container img {
     display: inline-block;
-    vertical-align: top; /* Align images to the top to avoid alignment issues */
+    vertical-align: top; 
 }
 
 

@@ -1,10 +1,20 @@
-<p>This page is working</p>
+<nav class="navbar">
+    <img src="../../assets/logo.svg" alt="logo">
+    <a routerLink="/discussion">Discussion </a>
+    <a routerLink="/">Home</a>
+</nav>
 
-<mat-grid-list cols="3" gutterSize="20px">
-    <mat-grid-tile *ngFor="let member of members">
-        <img [src]="member.image" class="grid-img">
-        <p>{{member.first_name}}</p>
-        <p>{{member.last_name}}</p>
-        <p>{{member.position}}</p>
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="execPage">
+
+
+    <mat-grid-list cols="3" gutterSize="50px">
+        <mat-grid-tile *ngFor="let member of members">
+            <div>
+                <img [src]="member.image" class="grid-img">
+                <h2>{{member.first_name}} {{member.last_name}}</h2>
+                <p>{{member.title}}</p>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+</div>

@@ -14,13 +14,16 @@ export class ModelService {
     return this.http.get<{ message: string, members: any[] }>('http://localhost:3000/api/members')
       .pipe(
         map(response => response.members.map(member => ({
-          _id: member._id,
+          _id: member._id ? member._id.$oid : member._id,
           roll_call: member.roll_call,
           first_name: member.first_name,
           last_name: member.last_name,
           image: member.image,
-          position: member.position
+          position: member.position,
+          title: member.title
         })))
       );
   }
+  
+  
 }
