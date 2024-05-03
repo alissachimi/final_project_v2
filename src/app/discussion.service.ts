@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs'
 
 import { Post } from './discussion.model';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpErrorResponse} from '@angular/common/http'
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,29 @@ export class DiscussionService {
   constructor(private http: HttpClient){}
 
   getPosts(){
-    this.http.get<{message: string, posts:
-    Post[]}>('http://localhost:3000/api/posts').
-    subscribe((postData)=>{
-      this.posts = postData.posts;
-      //sends a copy of the data
+    // this.http.get<{message: string, posts:
+    // Post[]}>('http://localhost:3000/api/posts').
+    // subscribe((postData)=>{
+    //   this.posts = postData.posts;
+    //   //sends a copy of the data
+    //   this.postUpDate.next([...this.posts]);
+    // });
+
+    this.http.get<{message: string, posts:any}>('http://localhost:3000/api/posts')
+    .pipe(map((postData)=>{
+      return postData.posts.map(post=>{
+        return {
+          id:post.id,
+          author: post.author,
+          title: post.title,
+          content: post.content,
+          date: post.date
+        }
+      })
+    })).subscribe((transformedPost)=>{
+      this.posts = transformedPost;
       this.postUpDate.next([...this.posts]);
-    });
+    })
   }
 
   getPostUpdateListener(){
@@ -27,10 +44,14 @@ export class DiscussionService {
       return this.postUpDate.asObservable();
   }
 
-  addPost(id:number, author: string, title: string, content: string, date: Date){
-      const post: Post = {id:id, author: author, title: title, content:content, date:date};
-      this.posts.push(post);
-      this.postUpDate.next([...this.posts]);
-
+  addPost(id:number, author: string, title: string, content: string, date: string){
+      const post: Post = {id:id, author: 'alissa', title: title, content:content, date:date};
+      this.http.post<{message:string, postId: number}>('http://localhost:3000/api/posts', post)
+      .subscribe((responseData)=>{
+        const id = responseData.postId
+        post.id = id
+        this.posts.push(post);
+        this.postUpDate.next([...this.posts]);
+      })
   }
 }
