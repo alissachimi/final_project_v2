@@ -13,11 +13,12 @@
   <mat-card *ngIf="events.length > 0" #eventContainer>
     <div *ngFor="let event of events">
       <div class="card">
-        <h2 class="title">{{events.eventChair}}</h2>
+        <h2 class="title">{{event.eventChair}}</h2>
         <img src="../../assets/bidDay23.JPEG" alt="" style="width:100%">
         <div class="card-content">
-          <p><b>{{events.eventName}}</b></p>
-          <p>{{events.details}}</p>
+          <p><b>{{event.eventName}}</b></p>
+          <p>{{event.details}}</p>
+          <p>Total RSVPs: {{event.rsvpCount}}</p>
         </div>
       </div>
     </div>

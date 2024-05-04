@@ -1,0 +1,21 @@
+eventRSVP field changes:
+originally wanted to refer to events via a "foreign key"
+had trouble with that tho :/ had to scrap it but here's what it was before
+
+in app.js:
+app.post('/api/eventRSVPs',(req,res,next)=>{
+  const rsvp = new EventRSVPModel ({
+    // eventID: Number,
+    eventID: {type: Schema.Types.ObjectId, ref: "Event"}, // create "foreign key"
+    rollCallNum: req.body.rollCallNum
+  })
+  rsvp.save()
+});
+
+in backend/Models/eventRSVP.js
+// define eventRSVP schema
+eventRSVPSchema = mongoose.Schema({
+  // eventID: {type:Number, required:false}, // this is in addition to the id mongoDB automatically generates an objectID for documents
+  eventID: {type:ObjectId, required: true}, // want this to be a foreign key (the randomly generated document ID from events collection)
+  rollCallNum: {type:Number, required:true}
+})
