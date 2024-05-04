@@ -5,6 +5,7 @@ import { Exec2Component } from './exec2/exec2.component';
 import { DiscussionInput3Component } from './discussion-input3/discussion-input3.component';
 import { Events5Component } from './events5/events5.component';
 import { DiscussionDisplay4Component } from './discussion-display4/discussion-display4.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path:'events',component: Events5Component
+  },
+  {
+    path:'footer', component: FooterComponent
   }
 ];
 

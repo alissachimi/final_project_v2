@@ -1,0 +1,58 @@
+.execPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(198, 226, 251);
+}
+
+p {
+    text-align: center;
+    margin-top: -15px;
+}
+
+h2 {
+    text-align: center;
+}
+
+  
+.mat-grid-list {
+    width: 50%;
+    height: 100%; 
+}
+
+.mat-grid-tile {
+    height: 30%;
+}
+  
+
+.grid-img {
+    width: 200px;
+    border-radius: 100px;
+}
+
+
+.navbar {
+    background-color: navy;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar img{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
