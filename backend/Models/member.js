@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 memberSchema = mongoose.Schema({
   _id: {type:Number, required:false},
-  roll_call: {type:Number, required: true},
+  roll_call: {type:String, required: true},
   first_name: {type:String, required:true},
   last_name:{type:String, required:true},
   image:{type:String, required:true},

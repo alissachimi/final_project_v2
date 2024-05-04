@@ -47,11 +47,12 @@ export class DiscussionService {
 
   addPost(id:number, roll_call: number, title: string, content: string, date: string){
       const post: Post = {id:id, roll_call: roll_call, author:null, title: title, content:content, my_date:date};
-      this.http.post<{message:string, postId: number, date: string}>('http://localhost:3000/api/posts', post)
+      this.http.post<{message:string, postId: number, date: string, author: string}>('http://localhost:3000/api/posts', post)
       .subscribe((responseData)=>{
         const id = responseData.postId
         post.id = id
         post.my_date = responseData.date
+        post.author = responseData.author
         this.posts.push(post);
         this.postUpDate.next([...this.posts]);
       })

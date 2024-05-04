@@ -40,7 +40,7 @@ app.get('/', (req, res, next) => {
 })
 
 
-app.post('/api/posts',(req,res,next)=>{
+app.post('/api/posts',async (req,res,next)=>{
   //get the current date
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -50,14 +50,13 @@ app.post('/api/posts',(req,res,next)=>{
   var today_formatted = mm + '/' + dd + '/' + yyyy;
 
   //get author name based on roll call number inputted
-  // var member_document = MemberModel.findOne( { "roll_call": 103 } )
-  // console.log(member_document)
-  // var member_name = member_document.first_name + ' ' + member_document.last_name
-  // console.log(member_name)
+  var member_document = await MemberModel.findOne( { "roll_call": "103" } )
+  var member_name = member_document.first_name + ' ' + member_document.last_name
+
   const post = new PostModel({
     id: req.body.id,
     roll_call: req.body.roll_call,
-    author: null,
+    author: member_name,
     title: req.body.title,
     content: req.body.content,
     my_date: today_formatted
@@ -68,7 +67,8 @@ app.post('/api/posts',(req,res,next)=>{
     res.status(201).json({
       message: 'Post added successfully',
       postId: createPost._id,
-      date: createPost.my_date
+      date: createPost.my_date,
+      author: member_name
     })
   })
   .catch((error) => {

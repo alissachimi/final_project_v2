@@ -7,6 +7,7 @@
             <p class="date">{{post.my_date}}</p>
             <p class="title">{{post.title}}</p>
             <p>{{post.content}}</p>
+            <p  class="date">{{post.author}}</p>
           </div>
         </div>
         <div *ngIf="i % 2 == 1" class="oddPost" [@fadeInUp]>
@@ -14,6 +15,7 @@
             <p class="date">{{post.my_date}}</p>
             <p class="title">{{post.title}}</p>
             <p>{{post.content}}</p>
+            <p  class="date">{{post.author}}</p>
           </div>
           <img class="authorPicOdd" [src]="'assets/' + post.roll_call + '.jpg'">
         </div>
