@@ -124,14 +124,38 @@ app.get('/api/events', (req, res, next)=>{
     })
   })
 })
+
 // set up eventRSVPs
-app.post('/api/eventRSVPs',(req,res,next)=>{
+app.post('/api/eventsRSVP', async (req,res,next)=>{
+  //get author name based on roll call number inputted
+  var member_document = await MemberModel.findOne( { "roll_call": String(req.body.rollCallNum) } )
+  var member_name = member_document.first_name + ' ' + member_document.last_name
+
+  console.log(req.body.eventID)
+
+  //get event name based on event id
+  var event_document = await EventModel.findOne( { "eventID": req.body.eventID } )
+  var event_name = event_document.eventName
+  
+  console.log(event_name)
+
   const rsvp = new EventRSVPModel ({
-    eventID: Number,
+    eventID: String(req.body.eventID),
     rollCallNum: req.body.rollCallNum
   })
-  rsvp.save()
+  rsvp.save().then(createRSVP => {
+    console.log('Post inserted successfully');
+    res.status(201).json({
+      message: 'Post added successfully',
+      name: member_name,
+      event: event_name,
+    })
+  })
+  .catch((error) => {
+    console.error('Error inserting post:', error);
+  });
 });
+
 app.get('/api/eventRSVPs', (req, res, next)=>{
   EventModel.find().then(documents =>{
     res.status(200).json({

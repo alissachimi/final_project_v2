@@ -17,8 +17,14 @@ import { throwError } from 'rxjs';
 })
 export class EventService {
   private events: Event[]=[];
-  private rsvps: EventRSVP[]=[];
+  //private rsvps: EventRSVP[]=[];
+  private lastRSVP: {
+    name: String,
+    event: String
+  }
+
   private eventUpDate = new Subject<Event[]>()
+  private eventRSVPUpDate = new Subject<any>()
 
   constructor(private http: HttpClient) { }
 
@@ -40,19 +46,29 @@ export class EventService {
       this.eventUpDate.next([...this.events]);
     })
   }
+
   getEventsUpdateListener(){
     return this.eventUpDate.asObservable();
   }
 
   // share updated events array with subscribers?
-  // getEventRSVPsUpdateListener(){ }
+  getEventRSVPsUpdateListener(){ 
+    return this.eventRSVPUpDate.asObservable();
+  }
 
   // increment eventCount if RSVP is valid
     // maybe create method to check for validity
   // this will initially be empty! adding to upon form submission
-  addEventRSVP(eventID: ObjectId, rollCallNum: Number){
+  addEventRSVP(eventID: Number, rollCallNum: Number){
     // get roll call num from form input but idk how to define that here
-    // const rsvp: EventRSVP = {eventID: eventID, rollCallNum: rollCallNum};
+    const rsvp: EventRSVP = {eventID: eventID, rollCallNum: rollCallNum};
+    
+    this.http.post<{message:string, name: string, event: string}>('http://localhost:3000/api/eventsRSVP', rsvp)
+    .subscribe((responseData)=>{
+      this.lastRSVP.name = responseData.name
+      this.lastRSVP.event = responseData.event
+      this.eventRSVPUpDate.next(this.lastRSVP);
+    })
     // add more
   }
 }

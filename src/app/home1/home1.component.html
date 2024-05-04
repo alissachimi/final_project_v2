@@ -3,7 +3,7 @@
   <div class="container">
     <img src="../../assets/bidDay23.JPEG" alt="2023 Bid Day" id="bidDay23">
     <img src="../../assets/eventsLabel.png" alt="Events" class="eventsLabel">
-    
+
     <div *ngFor="let event of events" class="eventList">
       <h2><b>{{ event.eventName }}</b></h2>
       <p>{{ event.eventDate | date: 'short' }}</p>
@@ -11,6 +11,6 @@
   </div>
 </div>
 
-  
-  
-  
+
+
+

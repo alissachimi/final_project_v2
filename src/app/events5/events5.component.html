@@ -12,6 +12,7 @@
   </div>
   <mat-card *ngIf="events.length > 0" #eventContainer>
     <div *ngFor="let event of events">
+      <!-- event information -->
       <div class="card">
         <h2 class="title">{{event.eventChair}}</h2>
         <img src="../../assets/bidDay23.JPEG" alt="" style="width:100%">
@@ -19,8 +20,15 @@
           <p><b>{{event.eventName}}</b></p>
           <p>{{event.details}}</p>
           <p>Total RSVPs: {{event.rsvpCount}}</p>
+          <p>Event ID: {{event.eventID}}</p>
         </div>
       </div>
+      <!-- rsvp form -->
+      <form (submit)="onAddEventRSVP(rsvpForm, event.eventID)" #rsvpForm="ngForm">
+        <p>Enter your roll call number:</p>
+        <input type="text" name="rollCallNum" ngModel>
+        <button type="submit">Submit RSVP</button>
+      </form>
     </div>
   </mat-card>
   <p *ngIf="events.length <= 0">No upcoming events to display.</p>
