@@ -10,7 +10,19 @@
       <p>Details for the event are found here.</p>
     </div>
   </div>
-
+  <mat-card *ngIf="events.length > 0" #eventContainer>
+    <div *ngFor="let event of events">
+      <div class="card">
+        <h2 class="title">{{events.eventChair}}</h2>
+        <img src="../../assets/bidDay23.JPEG" alt="" style="width:100%">
+        <div class="card-content">
+          <p><b>{{events.eventName}}</b></p>
+          <p>{{events.details}}</p>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <p *ngIf="events.length <= 0">No upcoming events to display.</p>
 </div>
 
 <!-- use in form for event bubble -->

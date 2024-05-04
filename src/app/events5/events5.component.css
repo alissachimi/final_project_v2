@@ -5,6 +5,7 @@ h1{
   text-align: center;
   margin: auto;
   padding: 15px;
+  font-weight: bold;
 }
 hr {
   color: navy;
