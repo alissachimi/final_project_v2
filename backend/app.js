@@ -50,7 +50,7 @@ app.post('/api/posts',async (req,res,next)=>{
   var today_formatted = mm + '/' + dd + '/' + yyyy;
 
   //get author name based on roll call number inputted
-  var member_document = await MemberModel.findOne( { "roll_call": "103" } )
+  var member_document = await MemberModel.findOne( { "roll_call": String(req.body.roll_call) } )
   var member_name = member_document.first_name + ' ' + member_document.last_name
 
   const post = new PostModel({
