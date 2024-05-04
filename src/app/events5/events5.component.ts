@@ -37,7 +37,6 @@ export class Events5Component implements OnInit, OnDestroy {
       return;
     }
 
-    // increment RSVP count
     this.eventService.addEventRSVP(eventID, form.value.rollCallNum);
     
     form.resetForm();
@@ -52,6 +51,6 @@ export class Events5Component implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
+    this.eventsSub.unsubscribe();
   }
 }

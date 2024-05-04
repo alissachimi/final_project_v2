@@ -1,8 +1,8 @@
 <h1>Upcoming Events</h1>
 <hr>
-<div class="grid-container">
-  <!-- replace with logic to dynamically create cards for each event in database -->
-  <mat-card *ngIf="events.length > 0" #eventContainer>
+<!-- dynamically create cards for each event in database -->
+<mat-card *ngIf="events.length > 0" #eventContainer>
+  <div class="grid-container">
     <div *ngFor="let event of events">
       <!-- event information -->
       <div class="card">
@@ -11,20 +11,18 @@
         <div class="card-content">
           <p><b>{{event.eventName}}</b></p>
           <p>{{event.details}}</p>
-          <p>Total RSVPs: {{event.rsvpCount}}</p>
-          <p>Event ID: {{event.eventID}}</p>
+          <!-- <p>Total RSVPs: {{event.rsvpCount}}</p> -->
+        </div>
+        <!-- rsvp form -->
+        <div class="form">
+          <form (submit)="onAddEventRSVP(rsvpForm, event.eventID)" #rsvpForm="ngForm">
+            <p>Enter your roll call number to RSVP:</p>
+            <input type="text" class="text-field" name="rollCallNum" ngModel>
+            <button type="submit" class="submit-btn">Submit RSVP</button>
+          </form>
         </div>
       </div>
-      <!-- rsvp form -->
-      <form (submit)="onAddEventRSVP(rsvpForm, event.eventID)" #rsvpForm="ngForm">
-        <p>Enter your roll call number:</p>
-        <input type="text" name="rollCallNum" ngModel>
-        <button type="submit">Submit RSVP</button>
-      </form>
     </div>
-  </mat-card>
-  <p *ngIf="events.length <= 0">No upcoming events to display.</p>
-</div>
-
-<!-- use in form for event bubble -->
-<button mat-button (click)="openDialog()">click me</button>
+  </div>
+</mat-card>
+<p *ngIf="events.length <= 0">No upcoming events to display.</p>
