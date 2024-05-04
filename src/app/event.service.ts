@@ -26,7 +26,9 @@ export class EventService {
   private eventUpDate = new Subject<Event[]>()
   private eventRSVPUpDate = new Subject<any>()
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.lastRSVP = { name: '', event: '' };
+   }
 
   // get the updated events array ?
   getEvents() {
@@ -52,7 +54,7 @@ export class EventService {
   }
 
   // share updated events array with subscribers?
-  getEventRSVPsUpdateListener(){ 
+  getEventRSVPsUpdateListener(){
     return this.eventRSVPUpDate.asObservable();
   }
 
@@ -62,7 +64,7 @@ export class EventService {
   addEventRSVP(eventID: Number, rollCallNum: Number){
     // get roll call num from form input but idk how to define that here
     const rsvp: EventRSVP = {eventID: eventID, rollCallNum: rollCallNum};
-    
+
     this.http.post<{message:string, name: string, event: string}>('http://localhost:3000/api/eventsRSVP', rsvp)
     .subscribe((responseData)=>{
       this.lastRSVP.name = responseData.name
