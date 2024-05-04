@@ -24,7 +24,8 @@ export class EventService {
     this.http.get<{ message: string, events: any[] }>('http://localhost:3000/api/events')
     .pipe(
       map(response => response.events.map(events => ({
-        _id: events._id,
+        // _id: events._id,
+        eventID: events.eventID,
         eventChair: events.eventChair,
         eventName: events.eventName,
         eventDate: events.eventDate,
