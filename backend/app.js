@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const PostModel = require('./Models/post')
+const EventModel = require('./Models/events') // events
+const EventRSVPModel = require('./Models/eventRSVPs') // eventRSVPs
 const MemberModel = require('./Models/member')
 
 mongoose.connect('mongodb+srv://an642:webdev2!@cs4380-final-project.lwkigre.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=CS4380-Final-Project')//connection string
@@ -79,6 +81,63 @@ app.get('/api/posts', (req, res, next)=>{
     res.status(200).json({
       message: 'this data is from the database',
       posts: documents
+    })
+  })
+})
+
+// set up events
+
+// dummy test data
+// app.post('/api/events',(req,res,next)=>{
+//   const event = new EventModel ({
+//     eventChair: 'Event Chair',
+//     eventName: 'Event TBD',
+//     eventDate: 'Date TBD',
+//     details: 'Details for the event are found here',
+//     rsvpCount: -1
+//   })
+//   event.save()
+// });
+app.post('/api/events',(req,res,next)=>{
+  const event = new EventModel ({
+    // id: req.body.id,
+    // eventChair: req.body.chair,
+    // eventName: req.body.name,
+    // eventDate: req.body.date,
+    // details: req.body.details,
+    // rsvpCount: req.body.rsvpCount
+    // id: Number,
+    eventChair: String,
+    eventName: String,
+    eventDate: Date,
+    details: String,
+    rsvpCount: Number
+  })
+  event.save()
+});
+
+app.get('/api/events', (req, res, next)=>{
+  EventModel.find().then(documents =>{
+    res.status(200).json({
+      message: 'successfully accessed events data',
+      events: documents
+    })
+  })
+})
+// set up eventRSVPs
+app.post('/api/eventRSVPs',(req,res,next)=>{
+  const rsvp = new EventRSVPModel ({
+    // id: Number,
+    eventID: {type: Schema.Types.ObjectId, ref: "Event"}, // create "foreign key"
+    rollCallNum: Number
+  })
+  rsvp.save()
+});
+app.get('/api/eventRSVPs', (req, res, next)=>{
+  EventModel.find().then(documents =>{
+    res.status(200).json({
+      message: 'successfully accessed eventRSVPs data',
+      rsvp: documents
     })
   })
 })

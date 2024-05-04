@@ -1,0 +1,48 @@
+/* card CSS via w3schools */
+
+h1{
+  color: navy;
+  text-align: center;
+  margin: auto;
+  padding: 15px;
+}
+hr {
+  color: navy;
+}
+
+.title {
+  color: navy;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+/* .img {
+  border-radius: 5px 5px 0 0;
+} */
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 10px; /* rounded corners */
+  display: grid;
+  max-height: max-content;
+}
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+/* Add some padding inside the card container */
+.card-content {
+  margin-top: 10px;
+  padding: 2px 16px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  margin: 10px;
+}
