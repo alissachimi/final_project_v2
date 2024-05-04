@@ -9,6 +9,9 @@ import {HttpClient} from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { ObjectId } from 'mongoose';
 
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
