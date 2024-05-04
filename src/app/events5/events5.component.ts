@@ -15,16 +15,21 @@ import { EventBubble6Component } from '../event-bubble6/event-bubble6.component'
 })
 export class Events5Component implements OnInit, OnDestroy {
   events: Event[]=[];
+  rsvps: EventRSVP[]=[];
   private eventsSub: Subscription;
+  // eventService: EventService;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, public eventService: EventService) {}
 
   openDialog() {
     this.dialog.open(EventBubble6Component);
   }
 
   ngOnInit(): void {
-
+    this.eventsSub = this.eventService.getEventsUpdateListener().subscribe((events: Event[])=>{
+      this.events = events;
+    })
+    this.eventService.getEvents()
   }
 
   ngOnDestroy(): void {
