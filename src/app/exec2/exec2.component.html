@@ -1,15 +1,17 @@
+<div class="exec2">
 
-<div class="execPage">
+    <img src="../../assets/MTE.png" alt="MTE" class="mte">
 
-
-    <mat-grid-list cols="3" gutterSize="50px">
-        <mat-grid-tile *ngFor="let member of members">
-            <div>
-                <img [src]="member.image" class="grid-img">
-                <h2>{{member.first_name}} {{member.last_name}}</h2>
-                <p>{{member.title}}</p>
-            </div>
-        </mat-grid-tile>
-    </mat-grid-list>
-    
+    <div class="exec-grid">
+        <mat-grid-list cols="3" gutterSize="50px">
+            <mat-grid-tile *ngFor="let member of members">
+                <div>
+                    <img [ngClass]="{ 'disabled-pic': member.roll_call === '102' }" [src]="member.image" class="grid-img">
+                    <h2 [ngStyle]="{ color: member.roll_call === '102' ? 'rgb(198, 226, 251)' : 'black' }">{{member.first_name}} {{member.last_name}}</h2>
+                    <p [ngStyle]="{ color: member.roll_call === '102' ? 'rgb(198, 226, 251)' : 'black' }">{{member.title}}</p>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        
+    </div>
 </div>
