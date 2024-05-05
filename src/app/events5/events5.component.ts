@@ -25,8 +25,8 @@ export class Events5Component implements OnInit, OnDestroy {
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.position = {
-      top: '0', // Distance from top of the viewport
-      right: '0', // Distance from right of the viewport
+      top: '20px', // Distance from top of the viewport
+      right: '20px', // Distance from right of the viewport
     };
     dialogConfig.hasBackdrop = false; // Disable backdrop
     this.dialog.open(EventBubble6Component, dialogConfig);
@@ -38,7 +38,7 @@ export class Events5Component implements OnInit, OnDestroy {
     }
 
     this.eventService.addEventRSVP(eventID, form.value.rollCallNum);
-    
+
     form.resetForm();
     this.openDialog();
   }

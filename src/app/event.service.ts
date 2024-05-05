@@ -23,7 +23,9 @@ export class EventService {
   private eventUpDate = new Subject<Event[]>()
   private eventRSVPUpDate = new Subject<any>()
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.lastRSVP = {name: '', event: ''}
+   }
 
   // get the updated events array
   getEvents() {
@@ -60,6 +62,7 @@ export class EventService {
 
     this.http.post<{message:string, name: string, event: string}>('http://localhost:3000/api/eventsRSVP', rsvp)
     .subscribe((responseData)=>{
+      console.log('here is the response data !!!!!!!!!!!!!!!!!', responseData)
       this.lastRSVP.name = responseData.name
       this.lastRSVP.event = responseData.event
       this.eventRSVPUpDate.next(this.lastRSVP);
