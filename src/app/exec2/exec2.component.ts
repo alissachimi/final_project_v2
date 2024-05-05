@@ -15,11 +15,10 @@ export class Exec2Component implements OnInit {
   ngOnInit(): void {
     this.modelService.getMembers().subscribe(members => {
       this.members = members.filter(member => member.position === 'exec')
+
         // Sort filtered members by roll call number in ascending order
         .sort((a, b) => a.roll_call - b.roll_call);
     });
   }
-
-  toggleImageSize(member): void {  }
   
 }

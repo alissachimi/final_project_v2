@@ -16,7 +16,8 @@ a{
 }
 .navbar a:hover {
   background-color: #ddd;
-  color: black;
+  color: navy;
+  font-weight:bolder;
 }
 
 .navbar img{

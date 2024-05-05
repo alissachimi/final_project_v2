@@ -14,12 +14,13 @@ export class Home1Component implements OnInit, OnDestroy {
 
   constructor(private eventService: EventService) {}
 
+  //fetches events
   ngOnInit(): void {
     this.eventsSub = this.eventService.getEventsUpdateListener()
       .subscribe((events: Event[]) => {
         this.events = events;
       });
-    this.eventService.getEvents(); // Fetch events initially
+    this.eventService.getEvents();
   }
 
   ngOnDestroy(): void {
