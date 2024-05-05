@@ -9,7 +9,8 @@
     "test": "ng test",
     "serve:ssr:my-app": "node dist/my-app/server/server.mjs",
     "start:server": "nodemon server.js",
-    "start:server-prod": "node server.js"
+    "start:server-prod": "node server.js",
+    "heroku-postbuild": "ng build — prod"
   },
   "private": true,
   "dependencies": {
