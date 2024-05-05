@@ -12,8 +12,8 @@ export class EventBubble6Component {
   private rsvpSub: Subscription;
   constructor(private dialog: MatDialog, public eventService: EventService) {}
 
-  name = ''
-  event = ''
+  name = '';
+  event = '';
 
   ngOnInit(): void {
     this.rsvpSub = this.eventService.getEventRSVPsUpdateListener().subscribe((lastRSVP: any)=>{
