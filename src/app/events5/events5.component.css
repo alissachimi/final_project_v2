@@ -1,5 +1,3 @@
-/* card CSS via w3schools */
-
 h1{
   color: navy;
   text-align: center;
@@ -11,6 +9,10 @@ hr {
   color: navy;
 }
 
+.bg{
+  /* background-color: rgb(198, 226, 251); */
+  background-color: white;
+}
 .title {
   color: navy;
   text-align: center;
@@ -18,17 +20,16 @@ hr {
   padding: 10px;
 }
 
-/* Add rounded corners to the top left and the top right corner of the image */
-/* .img {
-  border-radius: 5px 5px 0 0;
-} */
+/* card CSS via w3schools */
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 10px; /* rounded corners */
   display: grid;
-  max-height: max-content;
+  width: 100%;
+  border: navy solid 2px;
+  /* max-height: max-content; */
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
@@ -45,5 +46,21 @@ hr {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 20px;
-  margin: 10px;
+  margin: 20px;
+}
+.form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px 16px;
+}
+.submit-btn {
+  background-color: navy;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 5px;
+  /* float:right; */
+}
+.text-field{
+  padding: 5px;
 }

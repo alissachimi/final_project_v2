@@ -28,7 +28,7 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  // get the updated events array ?
+  // get the updated events array
   getEvents() {
     this.http.get<{ message: string, events: any[] }>('http://localhost:3000/api/events')
     .pipe(
@@ -51,16 +51,14 @@ export class EventService {
     return this.eventUpDate.asObservable();
   }
 
-  // share updated events array with subscribers?
+  // share updated events array with subscribers
   getEventRSVPsUpdateListener(){ 
     return this.eventRSVPUpDate.asObservable();
   }
 
-  // increment eventCount if RSVP is valid
-    // maybe create method to check for validity
-  // this will initially be empty! adding to upon form submission
+  // this will initially be empty! adding items upon form submission
   addEventRSVP(eventID: Number, rollCallNum: Number){
-    // get roll call num from form input but idk how to define that here
+    // get roll call num from form input via onAddEventRSVP() in .ts file 
     const rsvp: EventRSVP = {eventID: eventID, rollCallNum: rollCallNum};
     
     this.http.post<{message:string, name: string, event: string}>('http://localhost:3000/api/eventsRSVP', rsvp)
@@ -69,6 +67,5 @@ export class EventService {
       this.lastRSVP.event = responseData.event
       this.eventRSVPUpDate.next(this.lastRSVP);
     })
-    // add more
   }
 }
