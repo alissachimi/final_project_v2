@@ -1,3 +1,4 @@
+<body class="bg">
 <h1>Upcoming Events</h1>
 <hr>
 <!-- dynamically create cards for each event in database -->
@@ -7,7 +8,7 @@
       <!-- event information -->
       <div class="card">
         <h2 class="title">{{event.eventChair}}</h2>
-        <img src="../../assets/bidDay23.JPEG" alt="" style="width:100%">
+        <img src="../../assets/alpha-omega-epsilon-vector-logo-wide.png" alt="" style="width:100%">
         <div class="card-content">
           <p><b>{{event.eventName}}</b></p>
           <p>{{event.details}}</p>
@@ -26,3 +27,4 @@
   </div>
 </mat-card>
 <p *ngIf="events.length <= 0">No upcoming events to display.</p>
+</body>
