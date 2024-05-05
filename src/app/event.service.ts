@@ -9,9 +9,6 @@ import {HttpClient} from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { ObjectId } from 'mongoose';
 
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,11 +23,9 @@ export class EventService {
   private eventUpDate = new Subject<Event[]>()
   private eventRSVPUpDate = new Subject<any>()
 
-  constructor(private http: HttpClient) {
-    this.lastRSVP = { name: '', event: '' };
-   }
+  constructor(private http: HttpClient) { }
 
-  // get the updated events array ?
+  // get the updated events array
   getEvents() {
     this.http.get<{ message: string, events: any[] }>('http://localhost:3000/api/events')
     .pipe(
@@ -49,31 +44,25 @@ export class EventService {
     })
   }
 
-  // increment eventCount if RSVP is valid
-    // maybe create method to check for validity
-  // this will initially be empty! adding to upon form submission
+  getEventsUpdateListener(){
+    return this.eventUpDate.asObservable();
+  }
+
+  // share updated events array with subscribers
+  getEventRSVPsUpdateListener(){
+    return this.eventRSVPUpDate.asObservable();
+  }
+
+  // this will initially be empty! adding items upon form submission
   addEventRSVP(eventID: Number, rollCallNum: Number){
-    // get roll call num from form input but idk how to define that here
+    // get roll call num from form input via onAddEventRSVP() in .ts file
     const rsvp: EventRSVP = {eventID: eventID, rollCallNum: rollCallNum};
 
     this.http.post<{message:string, name: string, event: string}>('http://localhost:3000/api/eventsRSVP', rsvp)
     .subscribe((responseData)=>{
       this.lastRSVP.name = responseData.name
       this.lastRSVP.event = responseData.event
-
       this.eventRSVPUpDate.next(this.lastRSVP);
-       //get events with updated rsvps
     })
-    // add more
   }
-
-  getEventsUpdateListener(){
-    return this.eventUpDate.asObservable();
-  }
-
-  // share updated events array with subscribers?
-  getEventRSVPsUpdateListener(){
-    return this.eventRSVPUpDate.asObservable();
-  }
-
 }
