@@ -136,7 +136,8 @@ app.post('/api/eventsRSVP', async (req,res,next)=>{
   //get event name based on event id
   var event_document = await EventModel.findOne( { "eventID": req.body.eventID } )
   var event_name = event_document.eventName
-  
+
+
   console.log(event_name)
 
   const rsvp = new EventRSVPModel ({
@@ -150,6 +151,28 @@ app.post('/api/eventsRSVP', async (req,res,next)=>{
       name: member_name,
       event: event_name,
     })
+
+    EventModel.findOne({ "eventID": req.body.eventID })
+      .then(event => {
+        if (event) {
+          // Call the method to increment RSVP count
+          event.rsvpCount += 1;
+          event.save()
+            .then(updatedRSVPCount => {
+              console.log('RSVP count updated:', updatedRSVPCount);
+            })
+            .catch(error => {
+              console.error('Error updating RSVP count:', error);
+            });
+        } else {
+          console.log('Event not found');
+        }
+      })
+
+    .catch(error => {
+      console.error('Error finding event:', error);
+    });
+
   })
   .catch((error) => {
     console.error('Error inserting post:', error);

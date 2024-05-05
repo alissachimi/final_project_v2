@@ -17,8 +17,6 @@ export class EventBubble6Component {
 
   ngOnInit(): void {
     this.rsvpSub = this.eventService.getEventRSVPsUpdateListener().subscribe((lastRSVP: any)=>{
-      console.log('this is lastrsvp:')
-      console.log(lastRSVP)
       this.name = lastRSVP.name;
       this.event = lastRSVP.event;
     })

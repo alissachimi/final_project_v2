@@ -49,15 +49,6 @@ export class EventService {
     })
   }
 
-  getEventsUpdateListener(){
-    return this.eventUpDate.asObservable();
-  }
-
-  // share updated events array with subscribers?
-  getEventRSVPsUpdateListener(){
-    return this.eventRSVPUpDate.asObservable();
-  }
-
   // increment eventCount if RSVP is valid
     // maybe create method to check for validity
   // this will initially be empty! adding to upon form submission
@@ -69,8 +60,20 @@ export class EventService {
     .subscribe((responseData)=>{
       this.lastRSVP.name = responseData.name
       this.lastRSVP.event = responseData.event
+
       this.eventRSVPUpDate.next(this.lastRSVP);
+       //get events with updated rsvps
     })
     // add more
   }
+
+  getEventsUpdateListener(){
+    return this.eventUpDate.asObservable();
+  }
+
+  // share updated events array with subscribers?
+  getEventRSVPsUpdateListener(){
+    return this.eventRSVPUpDate.asObservable();
+  }
+
 }
