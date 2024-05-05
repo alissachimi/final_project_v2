@@ -6,7 +6,7 @@
 
 .exec-grid {
     margin-top: 100px;
-    margin-bottom: -200px;
+    /* margin-bottom: -200px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,13 +25,13 @@ h2 {
 
 .mat-grid-list {
     width: 50%;
-    height: 100%; 
+    height: 100%;
 }
 
 .mat-grid-tile {
     height: 30%;
 }
-  
+
 
 .grid-img {
     width: 200px;
@@ -52,10 +52,10 @@ h1{
     position: relative;
     text-align: center;
 }
-
-.container{
+/*
+.container2{
     height: 100%;
-}
+} */
 
 .mte {
     position: relative;
@@ -71,19 +71,19 @@ h1{
 }
 
 
-
-/* .background-image {
-    position: absolute; 
+/*
+.background-image {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url(../../assets/newBG.png);
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    opacity: 0.6; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.6;
 } */
-  
+
 
 
 
