@@ -29,7 +29,7 @@ export class EventService {
 
   // get the updated events array
   getEvents() {
-    this.http.get<{ message: string, events: any[] }>('http://localhost:3000/api/events')
+    this.http.get<{ message: string, events: any[] }>('https://c6e1-153-33-12-25.ngrok-free.app/api/events')
     .pipe(
       map(response => response.events.map(events => ({
         // _id: events._id,
@@ -60,7 +60,7 @@ export class EventService {
     // get roll call num from form input via onAddEventRSVP() in .ts file
     const rsvp: EventRSVP = {eventID: eventID, rollCallNum: rollCallNum};
 
-    this.http.post<{message:string, name: string, event: string}>('http://localhost:3000/api/eventsRSVP', rsvp)
+    this.http.post<{message:string, name: string, event: string}>('https://c6e1-153-33-12-25.ngrok-free.app/api/eventsRSVP', rsvp)
     .subscribe((responseData)=>{
       console.log('here is the response data !!!!!!!!!!!!!!!!!', responseData)
       this.lastRSVP.name = responseData.name

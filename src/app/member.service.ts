@@ -11,7 +11,7 @@ export class ModelService {
   constructor(private http: HttpClient) {}
 
   getMembers(): Observable<Member[]> {
-    return this.http.get<{ message: string, members: any[] }>('http://localhost:3000/api/members')
+    return this.http.get<{ message: string, members: any[] }>('https://c6e1-153-33-12-25.ngrok-free.app/api/members')
       .pipe(
         map(response => response.members.map(member => ({
           _id: member._id ? member._id.$oid : member._id,
@@ -24,6 +24,6 @@ export class ModelService {
         })))
       );
   }
-  
-  
+
+
 }

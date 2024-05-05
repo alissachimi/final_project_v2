@@ -15,14 +15,14 @@ export class DiscussionService {
 
   getPosts(){
     // this.http.get<{message: string, posts:
-    // Post[]}>('http://localhost:3000/api/posts').
+    // Post[]}>('https://c6e1-153-33-12-25.ngrok-free.app/api/posts').
     // subscribe((postData)=>{
     //   this.posts = postData.posts;
     //   //sends a copy of the data
     //   this.postUpDate.next([...this.posts]);
     // });
 
-    this.http.get<{message: string, posts:any}>('http://localhost:3000/api/posts')
+    this.http.get<{message: string, posts:any}>('https://c6e1-153-33-12-25.ngrok-free.app/api/posts')
     .pipe(map((postData)=>{
       return postData.posts.map(post=>{
         return {
@@ -47,7 +47,7 @@ export class DiscussionService {
 
   addPost(id:number, roll_call: number, title: string, content: string, date: string){
       const post: Post = {id:id, roll_call: roll_call, author:null, title: title, content:content, my_date:date};
-      this.http.post<{message:string, postId: number, date: string, author: string}>('http://localhost:3000/api/posts', post)
+      this.http.post<{message:string, postId: number, date: string, author: string}>('https://c6e1-153-33-12-25.ngrok-free.app/api/posts', post)
       .subscribe((responseData)=>{
         const id = responseData.postId
         post.id = id
