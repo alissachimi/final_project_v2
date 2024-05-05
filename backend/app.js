@@ -35,12 +35,12 @@ app.use((req, res, next)=>{
   next();
 });
 
-app.get('https://c6e1-153-33-12-25.ngrok-free.app/', (req, res, next) => {
+app.get('/', (req, res, next) => {
     res.send('Hello World!')
 })
 
 
-app.post('https://c6e1-153-33-12-25.ngrok-free.app/api/posts',async (req,res,next)=>{
+app.post('/api/posts',async (req,res,next)=>{
   //get the current date
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -76,7 +76,7 @@ app.post('https://c6e1-153-33-12-25.ngrok-free.app/api/posts',async (req,res,nex
   });
 });
 
-app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/posts', (req, res, next)=>{
+app.get('/api/posts', (req, res, next)=>{
   PostModel.find().then(documents =>{
     res.status(200).json({
       message: 'this data is from the database',
@@ -85,7 +85,7 @@ app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/posts', (req, res, next)=>
   })
 })
 
-app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/events', (req, res, next)=>{
+app.get('/api/events', (req, res, next)=>{
   EventModel.find().then(documents =>{
     res.status(200).json({
       message: 'successfully accessed events data',
@@ -95,7 +95,7 @@ app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/events', (req, res, next)=
 })
 
 // set up eventRSVPs
-app.post('https://c6e1-153-33-12-25.ngrok-free.app/api/eventsRSVP', async (req,res,next)=>{
+app.post('/api/eventsRSVP', async (req,res,next)=>{
   //get author name based on roll call number inputted
   var member_document = await MemberModel.findOne( { "roll_call": String(req.body.rollCallNum) } )
   var member_name = member_document.first_name + ' ' + member_document.last_name
@@ -148,7 +148,7 @@ app.post('https://c6e1-153-33-12-25.ngrok-free.app/api/eventsRSVP', async (req,r
   });
 });
 
-app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/eventRSVPs', (req, res, next)=>{
+app.get('/api/eventRSVPs', (req, res, next)=>{
   EventModel.find().then(documents =>{
     res.status(200).json({
       message: 'successfully accessed eventRSVPs data',
@@ -157,7 +157,7 @@ app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/eventRSVPs', (req, res, ne
   })
 })
 
-app.get('https://c6e1-153-33-12-25.ngrok-free.app/api/members', (req, res, next)=>{
+app.get('/api/members', (req, res, next)=>{
   MemberModel.find().then(documents =>{
     res.status(200).json({
       message: 'this data is from the database',
